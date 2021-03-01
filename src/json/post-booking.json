@@ -3,11 +3,11 @@
   "price": "240",
   "bookingDateStart": "new Date()",
   "bookingDateEnd": "new Date()",
-  "firstName": "Angga",
-  "lastName": "Risky",
-  "emailAddress": "angga@buildwithangga.com",
-  "phoneNumber": "081923012380",
-  "accountHolder": "Angga Risky",
+  "firstName": "Alifa",
+  "lastName": "Erizta",
+  "emailAddress": "alifa@erizta.com",
+  "phoneNumber": "081232911356",
+  "accountHolder": "Alifa Erizta",
   "bankFrom": "BCA",
   "proofPayment": "FileData()"
 }

@@ -42,6 +42,7 @@
 @import "spinners";
 @import "utilities";
 @import "print";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
 .brand-text-icon {
   font-size: 26px;
@@ -57,6 +58,7 @@ header {
   border-bottom: 1px solid $gray-200;
   width: 100%;
   position: relative;
+  margin-bottom: 50px;
 
   .navbar {
     height: 80px;
