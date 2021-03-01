@@ -6,6 +6,8 @@ import MostPicked from "parts/MostPicked"
 import Categories from "parts/Categories"
 import Testimony from "parts/Testimony"
 import Footer from "parts/Footer"
+// import Fade from "react-reveal/Fade"
+
 
 import landingPage from "json/landingPage.json"
 
