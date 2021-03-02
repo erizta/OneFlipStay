@@ -1,11 +1,12 @@
-import React from 'react'
-import propTypes from 'prop-types'
+import React from "react"
+
+import propTypes from "prop-types"
+import Button from "elements/Button"
+
 import "./index.scss"
-import Button from 'elements/Button'
 
 export default function Breadcrumb(props) {
-    const className = ["breadcrumb", props.className];
-
+    const className = ["breadcrumb", props.className]
     return (
         <nav aria-label="breadcrumb">
             <ol className={className.join(" ")}>
@@ -13,15 +14,16 @@ export default function Breadcrumb(props) {
                     return (
                         <li
                             key={`breadcrumb-${index}`}
-                            className={`breadcrumb-item
-                            ${index === props.data.length - 1 ? " active" : ""}`}
+                            className={`breadcrumb-item${index === props.data.length - 1 ? " active" : ""
+                                }`}
                         >
-                            {index === props.data.length - 1 ? (item.pageTitle) :
-                                (<Button type="link" href={item.pageHref}>
-                                    {item.pageTitle}
-                                </Button>
-                                )
-                            }
+                            {index === props.data.length - 1 ? (
+                                item.pageTitle
+                            ) : (
+                                    <Button type="link" href={item.pageHref}>
+                                        {item.pageTitle}
+                                    </Button>
+                                )}
                         </li>
                     )
                 })}
