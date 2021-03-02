@@ -4,6 +4,8 @@ import "./index.scss"
 import Button from 'elements/Button'
 
 export default function Breadcrumb(props) {
+    const className = ["breadcrumb", props.className];
+
     return (
         <nav aria-label="breadcrumb">
             <ol className={className.join(" ")}>
