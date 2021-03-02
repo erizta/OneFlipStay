@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-import InputNumber from 'elements/Form/InputNumber'
+import InputDate from 'elements/Form/InputDate'
 
 export default class Example extends Component {
 
     state = {
-        value: "1"
+        value: {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: "selection"
+        }
     }
 
     handleChange = e => {
@@ -16,10 +20,8 @@ export default class Example extends Component {
             <div className="cotainer">
                 <div className="row align-items-center justify-content-center" style={{ height: "100vh" }}>
                     <div className="col-auto">
-                        <InputNumber
+                        <InputDate
                             max={30}
-                            suffix=" night"
-                            isSuffixPlural
                             onChange={this.handleChange}
                             name="value"
                             value={this.state.value}
