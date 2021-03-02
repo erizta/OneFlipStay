@@ -1,18 +1,18 @@
-import React, { useState, useRef, useEffect } from "react";
-import propTypes from "prop-types";
+import React, { useState, useRef, useEffect } from "react"
+import propTypes from "prop-types"
 
-import { DateRange } from "react-date-range";
+import { DateRange } from "react-date-range"
 
-import "./index.scss";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "./index.scss"
+import "react-date-range/dist/styles.css" // main css file
+import "react-date-range/dist/theme/default.css" // theme css file
 
-import formatDate from "utils/formatDate";
-import iconCalendar from "assets/images/icons/ic_calendar.svg";
+import formatDate from "utils/formatDate"
+import iconCalendar from "assets/images/icons/ic_calendar.svg"
 
 export default function Date(props) {
-    const { value, placeholder, name } = props;
-    const [isShowed, setIsShowed] = useState(false);
+    const { value, placeholder, name } = props
+    const [isShowed, setIsShowed] = useState(false)
 
     const datePickerChange = (value) => {
         const target = {
@@ -20,31 +20,31 @@ export default function Date(props) {
                 value: value.selection,
                 name: name,
             },
-        };
+        }
         props.onChange(target)
-    };
+    }
 
     useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside)
 
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    });
+            document.removeEventListener("mousedown", handleClickOutside)
+        }
+    })
 
-    const refDate = useRef(null);
+    const refDate = useRef(null)
     const handleClickOutside = (event) => {
         if (refDate && !refDate.current.contains(event.target)) {
-            setIsShowed(false);
+            setIsShowed(false)
         }
-    };
+    }
 
     const check = (focus) => {
-        focus.indexOf(1) < 0 && setIsShowed(false);
-    };
+        focus.indexOf(1) < 0 && setIsShowed(false)
+    }
 
     const displayDate = `${value.startDate ? formatDate(value.startDate) : ""}${value.endDate ? " - " + formatDate(value.endDate) : ""
-        }`;
+        }`
 
     return (
         <div
@@ -79,7 +79,7 @@ export default function Date(props) {
                 )}
             </div>
         </div>
-    );
+    )
 }
 
 Date.propTypes = {
@@ -87,4 +87,4 @@ Date.propTypes = {
     onChange: propTypes.func,
     placeholder: propTypes.string,
     outerClassName: propTypes.string,
-};
+}
