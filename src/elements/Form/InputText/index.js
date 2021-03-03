@@ -1,22 +1,23 @@
-import React from 'react'
-import propTypes from 'prop-types'
+import React, { useState } from "react"
+import propTypes from "prop-types"
+
 import "./index.scss"
 
 export default function Text(props) {
-
     const {
-        name,
         value,
-        prepend,
-        append,
         type,
         placeholder,
+        name,
+        prepend,
+        append,
         outerClassName,
         inputClassName,
         errorResponse,
     } = props
 
-    const [HasError, setHasError] = userState(null)
+    const [HasError, setHasError] = useState(null)
+
     let pattern = ""
 
     if (type === "email") pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -26,22 +27,22 @@ export default function Text(props) {
         const target = {
             target: {
                 name: name,
-                value: event.target.value
-            }
+                value: event.target.value,
+            },
+        }
+
+        if (type === "email") {
+            if (!pattern.test(event.target.value)) setHasError(errorResponse)
+            else setHasError(null)
+        }
+
+        if (type === "tel") {
+            if (event.target.validity.valid) props.onChange(target)
+        }
+        else {
+            props.onChange(target)
         }
     }
-
-    if (type === "email") {
-        if (!pattern.test(event.target.value)) setHasError(errorResponse)
-        else setHasError(null)
-    }
-    if (type === "tel") {
-        if (event.target.validity.valid) props.onChange(target)
-    }
-    else {
-        props.onChange(target)
-    }
-
 
     return (
         <div className={["input-text mb-3", outerClassName].join(" ")}>
@@ -55,9 +56,8 @@ export default function Text(props) {
                     name={name}
                     type={type}
                     pattern={pattern}
-                    value={value}
-                    readOnly
                     className={["form-control", inputClassName].join(" ")}
+                    value={value}
                     placeholder={placeholder}
                     onChange={onChange}
                 />
@@ -68,7 +68,6 @@ export default function Text(props) {
                 )}
             </div>
             {HasError && <span className="error-helper">{HasError}</span>}
-
         </div>
     )
 }

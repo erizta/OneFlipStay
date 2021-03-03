@@ -11,7 +11,7 @@ export default function Numbering(style, className, data, current) {
     return (
         <Fade>
             <ol className={["stepper", className].join(" ")} style={style}>
-                {KeysOfData.map((lis, index) => {
+                {KeysOfData.map((list, index) => {
                     let isActive = list === current ? "active" : ""
                     if (index + 1 === KeysOfData.length) {
                         isActive = ""
