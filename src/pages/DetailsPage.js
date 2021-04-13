@@ -62,7 +62,7 @@ class DetailsPage extends Component {
           </div>
         </section>
 
-        <Categories data={page[match.params.id].category} />
+        <Categories data={page[match.params.id].activityId} />
         <Testimony data={page[match.params.id].testimonial} />
 
         <Footer />
