@@ -7,9 +7,9 @@ import PageDetailTitle from "parts/PageDetailTitle"
 import FeaturedImage from "parts/FeaturedImage"
 import PageDetailDescription from "parts/PageDetailDescription"
 import BookingForm from "parts/BookingForm"
-import Categories from "parts/Categories"
 import Testimony from "parts/Testimony"
 import Footer from "parts/Footer"
+import Activities from "parts/Activities"
 
 import ItemDetails from "json/itemDetails.json"
 
@@ -62,7 +62,7 @@ class DetailsPage extends Component {
           </div>
         </section>
 
-        <Categories data={page[match.params.id].activityId} />
+        <Activities data={page[match.params.id].activityId} />
         <Testimony data={page[match.params.id].testimonial} />
 
         <Footer />
