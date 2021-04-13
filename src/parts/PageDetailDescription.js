@@ -7,7 +7,7 @@ export default function PageDetailDescription({ data }) {
             <h4>About the place</h4>
             {ReactHtmlParser(data.description)}
             <div className="row" style={{ marginTop: 30 }}>
-                {data.imageId.map((feature, index) => {
+                {data.fetureId.map((feature, index) => {
                     return (
                         <div
                             className="col-3"
