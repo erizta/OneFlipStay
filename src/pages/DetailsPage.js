@@ -11,8 +11,6 @@ import Testimony from "parts/Testimony"
 import Footer from "parts/Footer"
 import Activities from "parts/Activities"
 
-import ItemDetails from "json/itemDetails.json"
-
 import { checkoutBooking } from "store/actions/checkout"
 import { fetchPage } from "store/actions/page"
 
