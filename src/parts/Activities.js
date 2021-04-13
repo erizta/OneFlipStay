@@ -6,7 +6,7 @@ import Button from "elements/Button"
 export default function Activities({ data }) {
     if (data.length === 0) return null
     return (
-        <section className="container" key={`activity-${index1}`}>
+        <section className="container">
             <Fade bottom>
                 <h4 className="mb-3 font-weight-medium">Activities</h4>
                 <div className="container-grid">
@@ -14,7 +14,7 @@ export default function Activities({ data }) {
                         return (
                             <div
                                 className="item column-3 row-1"
-                                key={`activity-${index1}-item-${index2}`}
+                                key={`activity-item-${index2}`}
                             >
                                 <Fade bottom delay={300 * index2}>
                                     <div className="card">
@@ -27,8 +27,8 @@ export default function Activities({ data }) {
                                         <figure className="img-wrapper" style={{ height: 180 }}>
                                             <img
                                                 src={
-                                                    item.imageId[0]
-                                                        ? `${process.env.REACT_APP_HOST}/${item.imageId[0].imageUrl}`
+                                                    item.imageUrl
+                                                        ? `${process.env.REACT_APP_HOST}/${item.imageUrl}`
                                                         : ""
                                                 }
                                                 alt={item.title}
