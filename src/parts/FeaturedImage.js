@@ -1,5 +1,5 @@
-import React from "react";
-import Fade from "react-reveal/Fade";
+import React from "react"
+import Fade from "react-reveal/Fade"
 
 export default function FeaturedImage({ data }) {
     return (
@@ -24,9 +24,9 @@ export default function FeaturedImage({ data }) {
                                 </div>
                             </Fade>
                         </div>
-                    );
+                    )
                 })}
             </div>
         </section>
-    );
+    )
 }
