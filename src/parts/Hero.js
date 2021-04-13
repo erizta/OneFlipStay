@@ -18,6 +18,8 @@ export default function Hero(props) {
     })
   }
 
+  console.log(props.data)
+
   return (
     <Fade bottom>
     <section className="container pt-4">

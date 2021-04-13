@@ -1,18 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import propTypes from "prop-types";
+import React from "react"
+import { Link } from "react-router-dom"
+import propTypes from "prop-types"
 
 export default function Button(props) {
-    const className = [props.className];
-    if (props.isPrimary) className.push("btn-primary");
-    if (props.isLarge) className.push("btn-lg");
-    if (props.isSmall) className.push("btn-sm");
-    if (props.isBlock) className.push("btn-block");
-    if (props.hasShadow) className.push("btn-shadow");
+    const className = [props.className]
+    if (props.isPrimary) className.push("btn-primary")
+    if (props.isLight) className.push("btn-light")
+    if (props.isLarge) className.push("btn-lg")
+    if (props.isSmall) className.push("btn-sm")
+    if (props.isBlock) className.push("btn-block")
+    if (props.hasShadow) className.push("btn-shadow")
 
     const onClick = () => {
-        if (props.onClick) props.onClick();
-    };
+        if (props.onClick) props.onClick()
+    }
 
     if (props.isDisabled || props.isLoading) {
         if (props.isDisabled) className.push("disabled")
@@ -42,7 +43,7 @@ export default function Button(props) {
                 >
                     {props.children}
                 </a>
-            );
+            )
         } else {
             return (
                 <Link to={props.href}
@@ -61,7 +62,7 @@ export default function Button(props) {
             style={props.style}
             onClick={onClick}>{props.children}
         </button>
-    );
+    )
 }
 
 Button.propTypes = {
@@ -71,6 +72,7 @@ Button.propTypes = {
     href: propTypes.string,
     className: propTypes.string,
     isPrimary: propTypes.bool,
+    isLight: propTypes.bool,
     isDisabled: propTypes.bool,
     isLoading: propTypes.bool,
     isSmall: propTypes.bool,
@@ -78,4 +80,4 @@ Button.propTypes = {
     isBlock: propTypes.bool,
     isExternal: propTypes.bool,
     hasShadow: propTypes.bool
-};
+}

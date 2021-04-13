@@ -1,16 +1,14 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { Component } from "react"
+import { withRouter } from "react-router-dom"
 
-import propTypes from "prop-types";
+import propTypes from "prop-types"
 
-import Button from "elements/Button";
-import InputNumber from "elements/Form/InputNumber";
-import InputDate from "elements/Form/InputDate";
-// import { InputDate, InputNumber } from "elements/Form";
+import Button from "elements/Button"
+import { InputNumber, InputDate } from "elements/Form"
 
 class BookingForm extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       data: {
         duration: 1,
@@ -20,7 +18,7 @@ class BookingForm extends Component {
           key: "selection",
         },
       },
-    };
+    }
   }
 
   updateData = (e) => {
@@ -30,29 +28,29 @@ class BookingForm extends Component {
         ...this.state.data,
         [e.target.name]: e.target.value,
       },
-    });
-  };
+    })
+  }
 
   componentDidUpdate(prevProps, prevState) {
-    const { data } = this.state;
+    const { data } = this.state
 
     if (prevState.data.date !== data.date) {
-      const startDate = new Date(data.date.startDate);
-      const endDate = new Date(data.date.endDate);
-      const countDuration = new Date(endDate - startDate).getDate();
+      const startDate = new Date(data.date.startDate)
+      const endDate = new Date(data.date.endDate)
+      const countDuration = new Date(endDate - startDate).getDate()
       this.setState({
         data: {
           ...this.state.data,
           duration: countDuration,
         },
-      });
+      })
     }
 
     if (prevState.data.duration !== data.duration) {
-      const startDate = new Date(data.date.startDate);
+      const startDate = new Date(data.date.startDate)
       const endDate = new Date(
         startDate.setDate(startDate.getDate() + +data.duration - 1)
-      );
+      )
       this.setState({
         ...this.state,
         data: {
@@ -62,12 +60,12 @@ class BookingForm extends Component {
             endDate: endDate,
           },
         },
-      });
+      })
     }
   }
 
   startBooking = () => {
-    const { data } = this.state;
+    const { data } = this.state
     this.props.startBooking({
       _id: this.props.itemDetails._id,
       duration: data.duration,
@@ -75,13 +73,13 @@ class BookingForm extends Component {
         startDate: data.date.startDate,
         endDate: data.date.endDate,
       },
-    });
-    this.props.history.push("/checkout");
-  };
+    })
+    this.props.history.push("/checkout")
+  }
 
   render() {
-    const { data } = this.state;
-    const { itemDetails } = this.props;
+    const { data } = this.state
+    const { itemDetails, startBooking } = this.props
 
     return (
       <div className="card bordered" style={{ padding: "60px 80px" }}>
@@ -130,13 +128,13 @@ class BookingForm extends Component {
           Continue to Book
         </Button>
       </div>
-    );
+    )
   }
 }
 
 BookingForm.propTypes = {
   itemDetails: propTypes.object,
   startBooking: propTypes.func,
-};
+}
 
-export default withRouter(BookingForm);
+export default withRouter(BookingForm)

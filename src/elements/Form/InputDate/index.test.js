@@ -38,7 +38,6 @@ const setup = () => {
         wrapper,
         input
     }
-
 }
 
 test("should have wrapper with className .form-control", () => {
