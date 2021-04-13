@@ -50,7 +50,7 @@ class Checkout extends Component {
     render() {
 
         const { data } = this.state
-        const { checkout } = this.props
+        const { checkout,page } = this.props
 
         if (!checkout)
             return (
@@ -75,7 +75,7 @@ class Checkout extends Component {
                     <BookingInformation
                         data={data}
                         checkout={checkout}
-                        ItemDetails={ItemDetails}
+                        ItemDetails={page[this.props.match.params.id]}
                         onChange={this.onChange}
                     />
                 )
@@ -87,7 +87,7 @@ class Checkout extends Component {
                     <Payment
                         data={data}
                         checkout={checkout}
-                        ItemDetails={ItemDetails}
+                        ItemDetails={page[this.props.match.params.id]}
                         onChange={this.onChange}
                     />
                 )
@@ -204,6 +204,7 @@ class Checkout extends Component {
 
 const mapStateToProps = (state) => ({
     checkout: state.checkout,
+    page:state.page
 }); //mengambil state yg ada dalam redux
 
 
