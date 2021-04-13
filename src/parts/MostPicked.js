@@ -26,11 +26,11 @@ export default function MostPicked(props) {
                                                         item.imageId[0]
                                                             ? `${process.env.REACT_APP_HOST}/${item.imageId[0].imageUrl}`
                                                             : ""}
-                                                             alt={item.name} className="img-cover" />
+                                                             alt={item.title} className="img-cover" />
                                                 </figure>
                                                 <div className="meta-wrapper">
                                                     <Button className="stretched-link d-block text-white" type="link" href={`/properties/${item._id}`}>
-                                                        <h5>{item.name}</h5>
+                                                        <h5>{item.title}</h5>
                                                     </Button>
                                                     <span>
                                                         {item.city},{item.country}
