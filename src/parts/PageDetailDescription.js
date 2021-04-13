@@ -17,6 +17,7 @@ export default function PageDetailDescription({ data }) {
                                     style={{ marginBottom: 20 }}
                                 >
                                     <img
+                                        width="38"
                                         src={`${process.env.REACT_APP_HOST}/${feature.imageUrl}`}
                                         alt={feature.className}
                                         className="d-block mb-2"
