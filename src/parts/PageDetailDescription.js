@@ -8,8 +8,8 @@ export default function PageDetailDescription({ data }) {
             {ReactHtmlParser(data.description)}
             <div className="row" style={{ marginTop: 30 }}>
                 {
-                    data.featureId.length === 0 ? "Tidak ada Feature" :
-                        data.fetureId.map((feature, index) => {
+                    // data.imageId.length === 0 ? "Tidak ada Feature" :
+                        data.imageId.map((feature, index) => {
                             return (
                                 <div
                                     className="col-3"
