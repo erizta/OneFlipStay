@@ -13,8 +13,8 @@ import { fetchPage } from "store/actions/page"
 
 class LandingPage extends Component {
     constructor(props) {
-        super(props)
-        this.refMostPicked = React.createRef()
+        super(props);
+        this.refMostPicked = React.createRef();
     }
 
     componentDidMount() {
