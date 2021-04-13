@@ -28,7 +28,7 @@ class DetailsPage extends Component {
 
     const { page, match } = this.props
 
-    console.log(page)
+    // console.log(page)
 
     if (!page[match.params.id]) return null
 
