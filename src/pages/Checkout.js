@@ -60,7 +60,7 @@ class Checkout extends Component {
                     >
                         <div className="col-4">Choose the room first...
                         <div>
-                                <Button className="btn mt-5" type="link" href="/" isLight>Back</Button>
+                                <Button className="btn mt-5" type="button" onClick={()=>this.props.history.goBack()} isLight>Back</Button>
                             </div>
                         </div>
                     </div>
