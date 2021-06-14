@@ -17,7 +17,7 @@ import Completed from "parts/Checkout/Completed"
 
 import ItemDetails from 'json/itemDetails.json'
 
-// import { submitBooking } from "store/actions/checkout"
+import { submitBooking } from "store/actions/checkout"
 
 class Checkout extends Component {
 
@@ -47,10 +47,33 @@ class Checkout extends Component {
     componentDidMount() {
         window.scroll(0, 0);
     }
+
+    _Submit = (nextStep) => {
+        const { data } = this.state
+        const { checkout } = this.props
+        const payload = new FormData()
+        payload.append('firstName', data.firstName)
+        payload.append('lastName', data.lastName)
+        payload.append('email', data.email)
+        payload.append('phoneNumber', data.phone)
+        payload.append('idItem', checkout._id)
+        payload.append('duration', checkout.duration)
+        payload.append('bookingStartDate', checkout.date.startDate)
+        payload.append('bookingEndDate', checkout.date.endDate)
+        payload.append('accountHolder', data.bankHolder)
+        payload.append('bankFrom', data.bankName)
+        payload.append('image', data.proofPayment[0])
+        // payload.append('bankId', checkout.bankId)
+
+        this.props.submitBooking(payload).then(() => {
+            nextStep()
+        })
+    }
+
     render() {
 
         const { data } = this.state
-        const { checkout,page } = this.props
+        const { checkout, page } = this.props
 
         if (!checkout)
             return (
@@ -59,8 +82,8 @@ class Checkout extends Component {
                         style={{ height: "100vh" }}
                     >
                         <div className="col-4">Choose the room first...
-                        <div>
-                                <Button className="btn mt-5" type="button" onClick={()=>this.props.history.goBack()} isLight>Back</Button>
+                            <div>
+                                <Button className="btn mt-5" type="button" onClick={() => this.props.history.goBack()} isLight>Back</Button>
                             </div>
                         </div>
                     </div>
@@ -75,7 +98,7 @@ class Checkout extends Component {
                     <BookingInformation
                         data={data}
                         checkout={checkout}
-                        ItemDetails={page[this.props.match.params.id]}
+                        ItemDetails={page[checkout._id]}
                         onChange={this.onChange}
                     />
                 )
@@ -87,7 +110,7 @@ class Checkout extends Component {
                     <Payment
                         data={data}
                         checkout={checkout}
-                        ItemDetails={page[this.props.match.params.id]}
+                        ItemDetails={page[checkout._id]}
                         onChange={this.onChange}
                     />
                 )
@@ -130,7 +153,7 @@ class Checkout extends Component {
                                                             onClick={nextStep}
                                                         >
                                                             Continue to Book
-                                                    </Button>
+                                                        </Button>
                                                     </Fade>
                                                 )
                                             }
@@ -159,10 +182,10 @@ class Checkout extends Component {
                                                             isBlock
                                                             isPrimary
                                                             hasShadow
-                                                            onClick={nextStep}
+                                                            onClick={() => this._Submit(nextStep)}
                                                         >
                                                             Continue to Book
-                                                    </Button>
+                                                        </Button>
                                                     </Fade>
                                                 )
                                             }
@@ -174,7 +197,7 @@ class Checkout extends Component {
                                                 onClick={prevStep}
                                             >
                                                 Cancel
-                                        </Button>
+                                            </Button>
                                         </Controller>
                                     )}
 
@@ -189,7 +212,7 @@ class Checkout extends Component {
                                                 href=""
                                             >
                                                 Back to Home
-                                        </Button>
+                                            </Button>
                                         </Controller>
                                     )}
                                 </>
@@ -204,8 +227,8 @@ class Checkout extends Component {
 
 const mapStateToProps = (state) => ({
     checkout: state.checkout,
-    page:state.page
+    page: state.page
 }); //mengambil state yg ada dalam redux
 
 
-export default connect(mapStateToProps)(Checkout)
+export default connect(mapStateToProps, { submitBooking })(Checkout)
