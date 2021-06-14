@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import Fade from "react-reveal/Fade"
 import { connect } from "react-redux"
+import Fade from "react-reveal/Fade"
 
 import Header from "parts/Header"
 import Button from "elements/Button"
@@ -15,7 +15,7 @@ import BookingInformation from "parts/Checkout/BookingInformation"
 import Payment from "parts/Checkout/Payment"
 import Completed from "parts/Checkout/Completed"
 
-import ItemDetails from 'json/itemDetails.json'
+// import ItemDetails from 'json/itemDetails.json'
 
 import { submitBooking } from "store/actions/checkout"
 
@@ -162,7 +162,7 @@ class Checkout extends Component {
                                                 type="link"
                                                 isBlock
                                                 isLight
-                                                href={`/properties/${ItemDetails._id}`}
+                                                href={`/properties/${checkout._id}`}
                                             >
                                                 Cancel
                                             </Button>
